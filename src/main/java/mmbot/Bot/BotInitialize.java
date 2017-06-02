@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.JDABuilder;
  */
 public class BotInitialize {
 
-    private static JDA jda;
+    public static JDA jda;
 
     public static void ConnectTheBot() {
         try {

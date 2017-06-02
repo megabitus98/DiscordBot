@@ -1,5 +1,6 @@
 package mmbot.Commands;
 
+import mmbot.Bot.BotInitialize;
 import mmbot.Utilities.PropertiesManager;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -14,7 +15,7 @@ public class PingCommand implements Command {
     }
 
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getChannel().sendMessage("PONG! :scream: ").queue();
+        event.getChannel().sendMessage("PONG! :scream: " + "\n" + BotInitialize.jda.getPing() + "ms").queue();
     }
 
     public String help() {
