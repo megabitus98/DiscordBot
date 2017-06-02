@@ -3,6 +3,7 @@ package mmbot.Utilities;
 import mmbot.Commands.CommandManager;
 import mmbot.Main;
 import net.dv8tion.jda.core.events.ReadyEvent;
+import net.dv8tion.jda.core.events.guild.voice.GuildVoiceJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -22,5 +23,11 @@ public class BotListener extends ListenerAdapter {
     @Override
     public void onReady(ReadyEvent event) {
         System.out.println("Status|Logged in as: " + event.getJDA().getSelfUser().getName());
+    }
+
+    @Override
+    public void onGuildVoiceJoin(GuildVoiceJoinEvent event) {
+        String user = event.getMember().getUser().getName();
+        event.getGuild().getPublicChannel().sendMessage("Welcome " + user + "!").queue();
     }
 }
