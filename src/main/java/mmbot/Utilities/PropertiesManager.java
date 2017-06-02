@@ -16,7 +16,7 @@ public class PropertiesManager {
     public static String emoji_Location = "D:\\Cloud Storage\\Dropbox\\Programare\\DiscordBot\\out\\artifacts\\DiscordBot_jar\\Emoji\\";
     public static String log_Location = "D:\\Cloud Storage\\Dropbox\\Programare\\DiscordBot\\out\\artifacts\\DiscordBot_jar\\log.txt";
     public static String config_Location = "D:\\Cloud Storage\\Dropbox\\Programare\\DiscordBot\\out\\artifacts\\DiscordBot_jar\\config.txt";
-    public static String prefix = "m!";
+    public static String prefix = "!!";
 
     public static void exportConsole() {
         File file = new File(log_Location);
