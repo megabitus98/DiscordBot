@@ -14,12 +14,12 @@ public class CommandManager {
     public static void RegisterCommands() {
         commands.put("ping", new PingCommand());
         commands.put("help", new HelpCommand());
+        commands.put("emoji", new EmojiCommand());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) {
         if (commands.containsKey(cmd.invoke)) {
             boolean safe = commands.get(cmd.invoke).called(cmd.args, cmd.event);
-            System.out.println(safe + "|" + cmd.invoke);
             if (safe) {
                 commands.get(cmd.invoke).action(cmd.args, cmd.event);
                 commands.get(cmd.invoke).executed(safe, cmd.event);
