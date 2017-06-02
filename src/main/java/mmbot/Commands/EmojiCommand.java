@@ -12,7 +12,7 @@ import java.io.IOException;
  * Created by Megabitus on 6/2/2017.
  */
 public class EmojiCommand implements Command {
-    final String HELP = "m!Emoji <emoji>";
+    final String HELP = PropertiesManager.prefix + "Emoji <emoji>";
 
     public boolean called(String[] args, MessageReceivedEvent event) {
         return true;

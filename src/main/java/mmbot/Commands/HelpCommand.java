@@ -1,5 +1,6 @@
 package mmbot.Commands;
 
+import mmbot.Utilities.PropertiesManager;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import static mmbot.Commands.CommandManager.commands;
  * Created by Megabitus on 6/2/2017.
  */
 public class HelpCommand implements Command {
-    private String HELP = "m!help";
+    private String HELP = PropertiesManager.prefix + "help";
 
     public boolean called(String[] args, MessageReceivedEvent event) {
         return true;

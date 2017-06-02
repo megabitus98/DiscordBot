@@ -11,7 +11,7 @@ import java.util.Collections;
 public class CommandParser {
     CommandContainer parse(String rw, MessageReceivedEvent event) {
         ArrayList<String> split = new ArrayList<String>();
-        String beheaded = rw.replaceFirst("m!", "");
+        String beheaded = rw.replaceFirst(PropertiesManager.prefix, "");
         String[] splitBeheaded = beheaded.split(" ");
         Collections.addAll(split, splitBeheaded);
         String invoke = split.get(0);

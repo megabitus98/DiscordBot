@@ -1,12 +1,13 @@
 package mmbot.Commands;
 
+import mmbot.Utilities.PropertiesManager;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 /**
  * Created by Megabitus on 6/2/2017.
  */
 public class PingCommand implements Command {
-    private final String HELP = "m!ping";
+    private final String HELP = PropertiesManager.prefix + "ping";
 
     public boolean called(String[] args, MessageReceivedEvent event) {
         return true;

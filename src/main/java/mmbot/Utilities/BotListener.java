@@ -13,7 +13,7 @@ public class BotListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getMessage().getContent().startsWith("m!") && !event.getMessage().getAuthor().getId().equals(event.getJDA().getSelfUser().getId())) {
+        if (event.getMessage().getContent().startsWith(PropertiesManager.prefix) && !event.getMessage().getAuthor().getId().equals(event.getJDA().getSelfUser().getId())) {
             CommandManager.handleCommand(Main.parser.parse(event.getMessage().getContent().toLowerCase(), event));
             System.out.println("Status|Got a message " + event.getMessage().getContent() + " from " + event.getMessage().getAuthor());
         }
