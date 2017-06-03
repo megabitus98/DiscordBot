@@ -80,8 +80,9 @@ public class PropertiesManager {
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                emojy.add(emoji_Location + file.getName());
+                emojy.add(file.getAbsolutePath());
             }
+            System.out.println(file.getAbsolutePath());
         }
 
     }
