@@ -21,7 +21,7 @@ public class HelpCommand implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         List<String> commandsName = new ArrayList<String>(commands.keySet());
         int commandsNumber = commands.size();
-        event.getChannel().sendMessage("I have: " + commandsNumber + " commands!").queue();
+        event.getChannel().sendMessage(String.format("I have: %d commands!", commandsNumber)).queue();
         for (int i = 1; i <= commandsNumber; i++) {
             String cmd = commandsName.get(i - 1);
             String build = "" + cmd + String.format("|Usage: %s ", commands.get(cmd).help());

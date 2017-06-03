@@ -8,6 +8,7 @@ import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +43,19 @@ public class BotListener extends ListenerAdapter {
     @Override
     public void onGuildVoiceJoin(GuildVoiceJoinEvent event) {
         String user = event.getMember().getUser().getName();
-        event.getGuild().getPublicChannel().sendMessage("Welcome " + user + "!").queue();
+        String ChannelName = event.getChannelJoined().getName();
+        String ServerName = event.getGuild().getName();
+        Message message = new MessageBuilder().append("Welcome " + user + " on " + ServerName + " in " + ChannelName).build();
+        try {
+            for (String item : PropertiesManager.emojy) {
+                String name = FilenameUtils.getBaseName(item);
+                if ("stan".equalsIgnoreCase(name)) {
+                    event.getGuild().getPublicChannel().sendFile(new File(item), message).queue();
+                    System.out.println("Welcome " + item + " has been sent!");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

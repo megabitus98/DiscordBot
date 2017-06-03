@@ -23,18 +23,12 @@ public class EmojiCommand implements Command {
         if (args.length != 0 && !args[0].equals("list")) {
             Message message = new MessageBuilder().append(args[0]).build();
             try {
-                String file1 = FilenameUtils.concat(PropertiesManager.emoji_Location, args[0] + ".png");
-                String file2 = FilenameUtils.concat(PropertiesManager.emoji_Location, args[0] + ".jpg");
-                String file3 = FilenameUtils.concat(PropertiesManager.emoji_Location, args[0] + ".gif");
-                if (new File(file1).exists()) {
-                    event.getChannel().sendFile(new File(file1), message).queue();
-                    System.out.println(file1);
-                } else if (new File(file2).exists()) {
-                    event.getChannel().sendFile(new File(file2), message).queue();
-                    System.out.println(file2);
-                } else if (new File(file3).exists()) {
-                    event.getChannel().sendFile(new File(file3), message).queue();
-                    System.out.println(file3);
+                for (String item : PropertiesManager.emojy) {
+                    String name = FilenameUtils.getBaseName(item);
+                    if (args[0].equalsIgnoreCase(name)) {
+                        event.getChannel().sendFile(new File(item), message).queue();
+                        System.out.println(item + " has been sent!");
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -42,11 +36,9 @@ public class EmojiCommand implements Command {
         } else if (args.length == 0) {
             event.getChannel().sendMessage("Usage: " + HELP).queue();
         } else if (args[0].equals("list")) {
-            for (int i = 1; i <= PropertiesManager.emojy.size(); i++) {
-                event.getChannel().sendMessage(PropertiesManager.prefix + "emoji " + PropertiesManager.emojy.toArray()[i]).queue();
-            }
+            for (String item : PropertiesManager.emojy)
+                event.getChannel().sendMessage(PropertiesManager.prefix + "emoji " + FilenameUtils.getBaseName(item)).queue();
         }
-
     }
 
     public String help() {
