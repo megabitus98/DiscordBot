@@ -15,6 +15,7 @@ public class CommandManager {
         commands.put("ping", new PingCommand());
         commands.put("help", new HelpCommand());
         commands.put("emoji", new EmojiCommand());
+        commands.put("stop", new StopCommand());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) {
