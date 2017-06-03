@@ -1,9 +1,6 @@
 package mmbot.Utilities;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +10,9 @@ import java.util.List;
  */
 public class PropertiesManager {
     public static List<String> emojy = new ArrayList<String>();
-    public static String emoji_Location = "D:\\Cloud Storage\\Dropbox\\Programare\\DiscordBot\\out\\artifacts\\DiscordBot_jar\\Emoji\\";
-    public static String log_Location = "D:\\Cloud Storage\\Dropbox\\Programare\\DiscordBot\\out\\artifacts\\DiscordBot_jar\\log.txt";
-    public static String config_Location = "D:\\Cloud Storage\\Dropbox\\Programare\\DiscordBot\\out\\artifacts\\DiscordBot_jar\\config.txt";
+    public static String config_Location = "config.txt";
+    public static String log_Location = "log.txt";
+    public static String emoji_Location = "";
     public static String prefix = "!!";
 
     public static void exportConsole() {
@@ -30,16 +27,62 @@ public class PropertiesManager {
         System.setOut(ps);
     }
 
-    public static void load_Emojy() {
+    public static void configFile() {
+        try {
+            File file = new File(config_Location);
+            if (file.createNewFile()) {
+                System.out.println("Config file created!");
+                System.out.println("Edit the config file, for the emoji!!");
+                PrintWriter pw = new PrintWriter(new FileWriter(config_Location));
+                pw.println(prefix);
+                pw.println("LOCATION EMOJI");
+                pw.close();
+                System.exit(0);
+            } else {
+                System.out.println("Config file already exists. Going to load the settings!");
+                try (BufferedReader br = new BufferedReader(new FileReader(config_Location))) {
+                    String sCurrentLine;
+                    int line = 0;
+                    while ((sCurrentLine = br.readLine()) != null) {
+                        switch (line) {
+                            case 0: {
+                                prefix = sCurrentLine;
+                                line++;
+                            }
+                            break;
+                            case 1: {
+                                emoji_Location = sCurrentLine;
+                                if (emoji_Location.equals("LOCATION EMOJI")) {
+                                    System.out.println("Edit the config file, for the emoji!!");
+                                    System.exit(0);
+                                }
+                                line++;
+                            }
+                            default: {
+                            }
+                            break;
+                        }
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Prefix:" + prefix);
+        System.out.println("Emoji_Location:" + emoji_Location);
+    }
+
+    public static void load_Emoji() {
         File folder = new File(emoji_Location);
         File[] listOfFiles = folder.listFiles();
-
         for (File file : listOfFiles) {
             if (file.isFile()) {
                 emojy.add(emoji_Location + file.getName());
             }
         }
+
     }
-
-
 }

@@ -19,21 +19,27 @@ public class EmojiCommand implements Command {
     }
 
     public void action(String[] args, MessageReceivedEvent event) {
-        PropertiesManager.load_Emojy();
+        PropertiesManager.load_Emoji();
         if (args.length != 0) {
             Message message = new MessageBuilder().append(args[0]).build();
             try {
                 String file1 = PropertiesManager.emoji_Location + args[0] + ".png";
                 String file2 = PropertiesManager.emoji_Location + args[0] + ".jpg";
                 String file3 = PropertiesManager.emoji_Location + args[0] + ".gif";
-                if (new File(file1).exists()) event.getChannel().sendFile(new File(file1), message).queue();
-                else if (new File(file2).exists()) event.getChannel().sendFile(new File(file2), message).queue();
-                else if (new File(file3).exists()) event.getChannel().sendFile(new File(file3), message).queue();
+                if (new File(file1).exists()) {
+                    event.getChannel().sendFile(new File(file1), message).queue();
+                    System.out.println(file1);
+                } else if (new File(file2).exists()) {
+                    event.getChannel().sendFile(new File(file2), message).queue();
+                    System.out.println(file2);
+                } else if (new File(file3).exists()) {
+                    event.getChannel().sendFile(new File(file3), message).queue();
+                    System.out.println(file3);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else event.getChannel().sendMessage("Usage: " + HELP).queue();
-
     }
 
     public String help() {

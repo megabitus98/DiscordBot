@@ -18,6 +18,7 @@ public class BotListener extends ListenerAdapter {
             CommandManager.handleCommand(Main.parser.parse(event.getMessage().getContent().toLowerCase(), event));
             System.out.println("Status|Got a message " + event.getMessage().getContent() + " from " + event.getMessage().getAuthor());
         }
+        //if (event.getMessage().toString())
     }
 
     @Override

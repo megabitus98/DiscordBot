@@ -15,7 +15,8 @@ public class PingCommand implements Command {
     }
 
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getChannel().sendMessage("PONG! :scream: " + "\n" + BotInitialize.jda.getPing() + "ms").queue();
+        event.getChannel().sendMessage(String.format("PONG! :scream: \n" +
+                "%dms", BotInitialize.jda.getPing())).queue();
     }
 
     public String help() {
