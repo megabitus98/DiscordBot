@@ -82,8 +82,6 @@ public class PropertiesManager {
             if (file.isFile()) {
                 emojy.add(file.getAbsolutePath());
             }
-            System.out.println(file.getAbsolutePath());
         }
-
     }
 }

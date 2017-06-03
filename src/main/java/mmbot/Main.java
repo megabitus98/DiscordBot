@@ -15,6 +15,7 @@ public class Main {
     public static void main(String[] args) {
 
         PropertiesManager.configFile();
+        PropertiesManager.load_Emoji();
         //PropertiesManager.exportConsole();
         BotInitialize.ConnectTheBot();
         CommandManager.RegisterCommands();
