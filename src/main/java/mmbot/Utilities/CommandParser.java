@@ -2,13 +2,49 @@ package mmbot.Utilities;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Megabitus on 6/2/2017.
  */
 public class CommandParser {
+    public static List<String> getWords(String text) {
+        List<String> words = new ArrayList<String>();
+        BreakIterator breakIterator = BreakIterator.getWordInstance();
+        breakIterator.setText(text);
+        int lastIndex = breakIterator.first();
+        while (BreakIterator.DONE != lastIndex) {
+            int firstIndex = lastIndex;
+            lastIndex = breakIterator.next();
+            if (lastIndex != BreakIterator.DONE && Character.isLetterOrDigit(text.charAt(firstIndex))) {
+                words.add(text.substring(firstIndex, lastIndex));
+            }
+        }
+
+        return words;
+    }
+
+    public static String multilineComment(String original, String[] args) {
+        String s = original + System.getProperty("line.separator");
+        for (String item : args
+                ) {
+            s += item + System.getProperty("line.separator");
+        }
+        return s;
+    }
+
+    public static String singlelineComment(String original, String[] args) {
+        String s = original;
+        for (String item : args
+                ) {
+            s += item;
+        }
+        return s;
+    }
+
     CommandContainer parse(String rw, MessageReceivedEvent event) {
         ArrayList<String> split = new ArrayList<String>();
         String beheaded = rw.replaceFirst(PropertiesManager.prefix, "");

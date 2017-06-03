@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Megabitus on 6/2/2017.
  */
 public class PropertiesManager {
-    public static List<String> emojy = new ArrayList<String>();
+    public static List<String> emoji = new ArrayList<String>();
     public static String config_Location = "config.txt";
     public static String log_Location = "log.txt";
     public static String emoji_Location = "";
@@ -80,7 +80,7 @@ public class PropertiesManager {
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                emojy.add(file.getAbsolutePath());
+                emoji.add(file.getAbsolutePath());
             }
         }
     }

@@ -1,6 +1,7 @@
 package mmbot.Utilities;
 
 import mmbot.Commands.CommandManager;
+import mmbot.Commands.EmojiCommand;
 import mmbot.Main;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
@@ -24,15 +25,9 @@ public class BotListener extends ListenerAdapter {
             CommandManager.handleCommand(Main.parser.parse(event.getMessage().getContent().toLowerCase(), event));
             System.out.println("Status|Got a message " + event.getMessage().getContent() + " from " + event.getMessage().getAuthor());
         }
-        if (event.getMessage().getContent().equals("test")) {
-            String file = PropertiesManager.emojy.get(5);
-            Message message = new MessageBuilder().append("MEGA TEST").build();
-            try {
-                event.getChannel().sendFile(new File(file), message).queue();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        if (!event.getMessage().getAuthor().getId().equals(event.getJDA().getSelfUser().getId()))
+            EmojiCommand.sendEmoji(event.getMessage().getContent(), event);
+
     }
 
     @Override
@@ -47,7 +42,7 @@ public class BotListener extends ListenerAdapter {
         String ServerName = event.getGuild().getName();
         Message message = new MessageBuilder().append("Welcome " + user + " on " + ServerName + " in " + ChannelName).build();
         try {
-            for (String item : PropertiesManager.emojy) {
+            for (String item : PropertiesManager.emoji) {
                 String name = FilenameUtils.getBaseName(item);
                 if ("stan".equalsIgnoreCase(name)) {
                     event.getGuild().getPublicChannel().sendFile(new File(item), message).queue();
