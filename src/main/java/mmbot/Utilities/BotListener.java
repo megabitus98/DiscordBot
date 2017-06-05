@@ -23,7 +23,7 @@ public class BotListener extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getMessage().getContent().startsWith(PropertiesManager.prefix) && !event.getMessage().getAuthor().getId().equals(event.getJDA().getSelfUser().getId())) {
             CommandManager.handleCommand(Main.parser.parse(event.getMessage().getContent().toLowerCase(), event));
-            System.out.println("Status|Got a message " + event.getMessage().getContent() + " from " + event.getMessage().getAuthor());
+            System.out.println("Got a message " + event.getMessage().getContent() + " from " + event.getMessage().getAuthor());
         }
         if (!event.getMessage().getAuthor().getId().equals(event.getJDA().getSelfUser().getId())) {
             String emoji = event.getMessage().getContent().replaceAll(":", "");

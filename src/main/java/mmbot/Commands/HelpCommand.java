@@ -14,7 +14,7 @@ import static mmbot.Commands.CommandManager.commands;
  * Created by Megabitus on 6/2/2017.
  */
 public class HelpCommand implements Command {
-    private String HELP = PropertiesManager.prefix + "help";
+    private String HELP = PropertiesManager.prefix + "help" + "\n" + "This screen";
 
     public boolean called(String[] args, MessageReceivedEvent event) {
         return true;

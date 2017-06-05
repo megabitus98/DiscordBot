@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Megabitus on 6/2/2017.
  */
 public class EmojiCommand implements Command {
-    final String HELP = PropertiesManager.prefix + "emoji <emoji | list>";
+    final String HELP = PropertiesManager.prefix + "emoji <emoji | list>" + "\n" + "Used to show or list the emotes!";
 
     public static void sendEmoji(String name, MessageReceivedEvent event) {
         for (String item : PropertiesManager.emoji) {

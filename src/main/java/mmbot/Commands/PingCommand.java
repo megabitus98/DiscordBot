@@ -8,7 +8,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
  * Created by Megabitus on 6/2/2017.
  */
 public class PingCommand implements Command {
-    private final String HELP = PropertiesManager.prefix + "ping";
+    private final String HELP = PropertiesManager.prefix + "ping" + "\n" + "Used to test the latency to the server!";
 
     public boolean called(String[] args, MessageReceivedEvent event) {
         return true;
