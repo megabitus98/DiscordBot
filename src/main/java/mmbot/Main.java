@@ -10,7 +10,6 @@ import mmbot.Utilities.PropertiesManager;
  */
 public class Main {
     /*
-    TODO Let hentai 5 min/h in nsfw
     TODO Gica nice message
     */
     public static final CommandParser parser = new CommandParser();

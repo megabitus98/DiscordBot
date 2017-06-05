@@ -16,6 +16,7 @@ public class CommandManager {
         commands.put("help", new HelpCommand());
         commands.put("emoji", new EmojiCommand());
         commands.put("stop", new StopCommand());
+        commands.put("access", new AccessCommand());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) {
