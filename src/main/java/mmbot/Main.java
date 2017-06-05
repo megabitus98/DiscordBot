@@ -19,7 +19,7 @@ public class Main {
 
         PropertiesManager.configFile();
         PropertiesManager.load_Emoji();
-        //PropertiesManager.exportConsole();
+        PropertiesManager.exportConsole();
         BotInitialize.ConnectTheBot();
         CommandManager.RegisterCommands();
         Events.cleanListHour();

@@ -33,7 +33,7 @@ public class AccessCommand implements Command {
             Role role = guild.getRolesByName("NSFW Access", true).get(0);
             guildController.addRolesToMember(member, role).queue();
             System.out.println("Given access to " + member + " on server " + guild + " to role " + role.getName());
-            event.getChannel().sendMessage("Access given to " + member.getNickname() + "to NSFW Room for 5 minutes!").queue();
+            event.getChannel().sendMessage("Access given to " + member.getAsMention() + "to NSFW Room for 5 minutes!").queue();
             Events.waiting.add(member);
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -41,7 +41,7 @@ public class AccessCommand implements Command {
                 public void run() {
                     guildController.removeRolesFromMember(member, role).queue();
                     System.out.println("Removed access to " + member + " on server " + guild + " to role " + role.getName());
-                    event.getChannel().sendMessage("Removed access for NSFW Room for user " + member.getNickname() + "!").queue();
+                    event.getChannel().sendMessage("Removed access for NSFW Room for user " + member.getAsMention() + "!").queue();
                     timer.cancel();
                 }
             }, 300000, 1);

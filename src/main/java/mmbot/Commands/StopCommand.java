@@ -29,7 +29,8 @@ public class StopCommand implements Command {
                 for (String item : PropertiesManager.emoji) {
                     String name = FilenameUtils.getBaseName(item);
                     if ("SadKondo".equalsIgnoreCase(name)) {
-                        event.getGuild().getPublicChannel().sendFile(new File(item), message).complete();
+                        //TODO ADD COMPLETE
+                        event.getGuild().getPublicChannel().sendFile(new File(item), message);
                         System.out.println("System shutting down!");
                     }
                 }
@@ -37,6 +38,7 @@ public class StopCommand implements Command {
                 e.printStackTrace();
             }
             BotInitialize.jda.shutdown(true);
+            System.exit(0);
         }
     }
 
