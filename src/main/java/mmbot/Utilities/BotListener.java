@@ -29,7 +29,6 @@ public class BotListener extends ListenerAdapter {
             String emoji = event.getMessage().getContent().replaceAll(":", "");
             EmojiCommand.sendEmoji(emoji, event);
         }
-
     }
 
     @Override

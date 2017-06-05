@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Megabitus on 6/3/2017.
  */
 public class StopCommand implements Command {
-    String HELP = "Usage " + PropertiesManager.prefix + "stop" + "\n" + "Used to stop the bot by the OWNER";
+    String HELP = PropertiesManager.prefix + "stop" + "\n" + "Used to stop the bot by the OWNER";
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
