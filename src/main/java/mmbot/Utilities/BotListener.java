@@ -40,10 +40,9 @@ public class BotListener extends ListenerAdapter {
     @Override
     public void onGuildVoiceJoin(GuildVoiceJoinEvent event) {
         if (!event.getMember().getUser().isBot()) {
-            String user = event.getMember().getUser().getName();
             String ChannelName = event.getChannelJoined().getName();
             String ServerName = event.getGuild().getName();
-            Message message = new MessageBuilder().append("Welcome " + user + " on " + ServerName + " in " + ChannelName).build();
+            Message message = new MessageBuilder().append("Welcome " + event.getMember().getAsMention() + " on " + ServerName + " in " + ChannelName).build();
             try {
                 for (String item : PropertiesManager.emoji) {
                     String name = FilenameUtils.getBaseName(item);

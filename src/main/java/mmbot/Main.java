@@ -9,7 +9,10 @@ import mmbot.Utilities.PropertiesManager;
  * Created by Megabitus on 6/2/2017.
  */
 public class Main {
-
+    /*
+    TODO Let hentai 5 min/h in nsfw
+    TODO Gica nice message
+    */
     public static final CommandParser parser = new CommandParser();
 
     public static void main(String[] args) {
