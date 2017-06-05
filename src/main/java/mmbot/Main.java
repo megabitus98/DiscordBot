@@ -3,6 +3,7 @@ package mmbot;
 import mmbot.Bot.BotInitialize;
 import mmbot.Commands.CommandManager;
 import mmbot.Utilities.CommandParser;
+import mmbot.Utilities.Events;
 import mmbot.Utilities.PropertiesManager;
 
 /**
@@ -21,5 +22,6 @@ public class Main {
         //PropertiesManager.exportConsole();
         BotInitialize.ConnectTheBot();
         CommandManager.RegisterCommands();
+        Events.cleanListHour();
     }
 }

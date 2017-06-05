@@ -20,8 +20,10 @@ public class Events {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                System.out.println("One hour passed, clearing the list!");
-                BotInitialize.jda.getGuildsByName("Mega Server", false).get(0).getPublicChannel().sendMessage("One hour passed, clearing the list!").queue();
+                if (waiting.size() != 0) {
+                    System.out.println("One hour passed, clearing the list!");
+                    BotInitialize.jda.getGuildsByName("Mega Server", false).get(0).getPublicChannel().sendMessage("One hour passed, clearing the list!").queue();
+                }
                 waiting.clear();
             }
         }, 0, 3300000);
