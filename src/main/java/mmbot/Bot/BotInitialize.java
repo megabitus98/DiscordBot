@@ -1,6 +1,7 @@
 package mmbot.Bot;
 
 import mmbot.Utilities.BotListener;
+import mmbot.Utilities.PropertiesManager;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -15,7 +16,7 @@ public class BotInitialize {
     public static void ConnectTheBot() {
         try {
             jda = new JDABuilder(AccountType.BOT)
-                    .setToken("MzIwMDczMTI1NTgyNjAyMjUy.DBKU9g.89b-RZw0mT9Kgt3sl7fI4WTr7_g")
+                    .setToken(PropertiesManager.bot_Token)
                     .addEventListener(new BotListener())
                     .buildBlocking();
             jda.setAutoReconnect(true);
