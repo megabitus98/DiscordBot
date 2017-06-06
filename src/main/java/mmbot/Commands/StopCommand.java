@@ -5,6 +5,7 @@ import mmbot.Utilities.PropertiesManager;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -29,12 +30,13 @@ public class StopCommand implements Command {
                 for (String item : PropertiesManager.emoji) {
                     String name = FilenameUtils.getBaseName(item);
                     if ("SadKondo".equalsIgnoreCase(name)) {
-                        //TODO ADD COMPLETE
-                        event.getGuild().getPublicChannel().sendFile(new File(item), message);
+                        event.getGuild().getPublicChannel().sendFile(new File(item), message).complete(true);
                         System.out.println("System shutting down!");
                     }
                 }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (RateLimitedException e) {
                 e.printStackTrace();
             }
             BotInitialize.jda.shutdown(true);
