@@ -4,16 +4,12 @@ import mmbot.Commands.CommandManager;
 import mmbot.Commands.EmojiCommand;
 import mmbot.Main;
 import net.dv8tion.jda.core.MessageBuilder;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceJoinEvent;
 import net.dv8tion.jda.core.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import net.dv8tion.jda.core.managers.GuildController;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -41,21 +37,31 @@ public class BotListener extends ListenerAdapter {
         System.out.println("Status|Logged in as: " + event.getJDA().getSelfUser().getName());
     }
 
+    //TODO BUILD THE FUCKING THINK
     @Override
     public void onGuildVoiceMove(GuildVoiceMoveEvent event) {
-        if (!event.getMember().getUser().isBot() && !event.getChannelJoined().getName().equalsIgnoreCase("general") && !event.getChannelJoined().getName().equalsIgnoreCase("AFK")) {
-            String ChannelNameLeft = event.getChannelLeft().getName();
+        /*
+        if (!event.getMember().getUser().isBot()) {
+            Role roleLeft = null, roleJoin = null;
             String ChannelNameJoin = event.getChannelJoined().getName();
-            Member member = event.getMember();
-            Guild guild = event.getGuild();
-            GuildController guildController = new GuildController(guild);
-            Role roleLeft = guild.getRolesByName(ChannelNameLeft + " Role", true).get(0);
-            Role roleJoin = guild.getRolesByName(ChannelNameJoin + " Role", true).get(0);
-            guildController.addRolesToMember(member, roleJoin).queue();
-            guildController.removeRolesFromMember(member, roleLeft).queue();
-            System.out.println("Given access to " + member + " on server " + guild + " to role " + roleJoin.getName()
-                    + "\n" + "Removed access to " + member + " on server " + guild + " from role " + roleLeft.getName());
+            String ChannelNameLeft = event.getChannelLeft().getName();
+            GuildController guildController = new GuildController(event.getGuild());
+            for (Role role : event.getGuild().getRoles()
+                    ) {
+                if (role.getName().equalsIgnoreCase(ChannelNameLeft + " Role")) roleLeft = role;
+                if (role.getName().equalsIgnoreCase(ChannelNameJoin + " Role")) roleJoin = role;
+            }
+            if (!ChannelNameLeft.equalsIgnoreCase("General")) {
+                guildController.removeRolesFromMember(event.getMember(), roleLeft).submit();
+                System.out.println("Removed access to " + event.getMember() + " on server " + event.getGuild() + " from " + roleLeft.getName());
+            }
+            if (!ChannelNameJoin.equalsIgnoreCase("General")) {
+                guildController.addRolesToMember(event.getMember(), roleJoin).submit();
+                System.out.println("Given access to " + event.getMember() + " on server " + event.getGuild() + " to role " + roleJoin.getName());
+            }
+            System.out.println("\n");
         }
+        */
     }
 
     @Override

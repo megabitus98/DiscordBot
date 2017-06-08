@@ -65,7 +65,6 @@ public class PropertiesManager {
                             break;
                             case 2: {
                                 bot_Token = sCurrentLine;
-                                System.out.println(bot_Token.length());
                                 if (bot_Token.equals("LOCATION TOKEN") || bot_Token.isEmpty() || bot_Token.isEmpty() || bot_Token.equalsIgnoreCase(emoji_Location)) {
                                     System.out.println("Edit the config file, for the token!!");
                                     System.exit(0);
